@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+#upper_fix ul li{
+	margin-top:15px;
+	margin-right:18px;
+	font-size:medium;
+	/*font-weight:;*/
+	
+}
+
+#upper_fix ul li:first-child{margin-left:12px}
+#logout{
+float:right;
+margin-top:15px;}
+.label_field{margin-right:10px}
+.inp{
+	margin-right: 20px;
+	width:170px !important;
+}
+.second_layer{
+	margin-top:20px;
+	margin-left:85px;
+	padding-top:10px;
+	padding-bottom:5px;
+}
+.search{margin-right:50px;}
+
+.form_top{margin-top:50px;padding-top:30px !important}
+
+.wth{width:150px !important}
+#top_search{
+	font-weight: bold;
+	font-size: large;
+	margin-bottom:15px;
+}
+.navbar-inner,#events{
+	background:#3f3f3f;
+}
+#add,#add:visited,#add:hover{
+background: url("/assets/add.png") no-repeat scroll 10px 1px transparent;
+    border-right: 1px solid;
+    color: white;
+    line-height: 30px !important;
+    padding: 1px 8px 0 30px;
+    text-decoration: none;;
+}
+#remove,#remove:visited,#remove:hover{
+background: url("/assets/minus-circle.png") no-repeat 10px center;
+padding:30px;
+color:white;
+text-decoration: none;
+}
+#events{height:30px;}

@@ -1,0 +1,250 @@
+<script type="text/javascript">
+  var asInitVals = new Array();
+
+$(document).ready(function() {
+  var oTable = $('#example').dataTable( {
+    "oLanguage": {
+      "sSearch": "Search all columns:"
+    },"bJQueryUI":true,"sPaginationType":"full_numbers"
+    
+  } );
+  
+  $("tfoot input").keyup( function () {
+    /* Filter on the column (the index) of this element */
+    oTable.fnFilter( this.value, $("tfoot input").index(this) );
+  } );
+  
+  
+  
+  /*
+   * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
+   * the footer
+   */
+  $("tfoot input").each( function (i) {
+    asInitVals[i] = this.value;
+  } );
+  
+  $("tfoot input").focus( function () {
+    if ( this.className == "search_init" )
+    {
+      this.className = "";
+      this.value = "";
+    }
+  } );
+  
+  $("tfoot input").blur( function (i) {
+    if ( this.value == "" )
+    {
+      this.className = "search_init";
+      this.value = asInitVals[$("tfoot input").index(this)];
+    }
+  } );
+} );
+</script>
+<style type="text/css">
+@import "assets/demo_table_jui.css";
+ @import "assets/jquery-ui-1.8.4.custom.css";
+div.dataTables_length {
+  float: left;
+  display:none;
+  background-color: red;
+}
+.ui-corner-tl, .ui-corner-tr {
+display: none;
+}
+/*.dataTables_paginate > span ,.fg-buttonset > span ,.ui-buttonset > span ,.fg-buttonset-multi > span ,.ui-buttonset-multi > span ,.paging_full_numbers > span{color:white !important;}
+ .ui-corner-br {background:black;} */
+div.dataTables_filter {
+  float: right;
+  background-color: green;
+  display:none;
+}
+div.dataTables_info {
+  float: left;
+
+}
+div.dataTables_paginate {
+  float: right;
+
+}
+div.dataTables_length, div.dataTables_filter, div.dataTables_paginate, div.dataTables_info {
+  padding: 6px;
+  
+
+}
+table.pretty tbody th {
+  text-align: left;
+  /*background: #91c5d4;*/
+   background: red;
+}
+table.pretty tbody td {
+  text-align: center;
+  background: #d5eaf0;
+}
+table.pretty tbody tr.odd td {
+  background: #bcd9e1;
+}
+.search_init {
+  padding-right:0px !important;
+  padding-left:0px !important
+}
+.ui-state-default .ui-icon {display:inline-block !important;margin-left:50px !important;}
+  /*.search_init{padding-right:0px !important;padding-left:0px !important}*/
+</style>
+
+<div class="container">
+  <!--<form class="well form-inline form_top">
+      <div id="top_search">Search</div>
+      <span class="label_field">Last Name</span>
+      <input type="text" class="input-small inp" placeholder="Last Name">
+      
+      <span class='label_field'>Phone</span>
+      <input type="password" class="input-small inp" placeholder="Phone">
+      
+      
+      <span class="label_field">Email</span>
+      <input type="password" class="input-small inp" placeholder="Email">
+      
+      
+      <div class="second_layer">
+        <button type="submit" class="btn search wth">Search</button>
+        <button type="submit" class="btn wth">Add New Family</button>
+      </div>
+    </form>-->
+  <div style="height:30px;"></div>
+  <fieldset>
+  <legend>Search</legend>
+  <form class="form-inline custom-form">
+    <input type="text" class="input-large" placeholder="Last Name">
+    <input type="password" class="input-large" placeholder="Phone">
+    <input type="password" class="input-large" placeholder="Email">
+    <div class="control-group">
+      <button type="submit" class="btn btn-warning">Search</button>
+      <button type="submit" class="btn btn-warning">Add New Family</button>
+    </div>
+  </form>
+  </fieldset>
+  <div class="container">
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="example">
+      <thead>
+        <tr>
+          <th>Family</th>
+          <th>Dogs</th>
+          <th>Cats</th>
+          <th>email</th>
+          <th>Phone</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Smith</td>
+          <td></td>
+          <td>cat a,cat b</td>
+          <td>m@cm.com</td>
+          <td>321.913.9055</td>
+          <td>Chicago</td>
+        </tr>
+        <tr>
+          <td>John Doe</td>
+          <td>fido,rex,spot</td>
+          <td></td>
+          <td>f@cm.com</td>
+          <td>325.913.9055</td>
+          <td>Chicago</td>
+        </tr>
+        <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+        <tr>
+          <td>John Doe</td>
+          <td>fido,rex,spot</td>
+          <td></td>
+          <td>f@cm.com</td>
+          <td>325.913.9055</td>
+          <td>Chicago</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+         <tr>
+          <td>Michael Doe</td>
+          <td>meto</td>
+          <td>cat f</td>
+          <td>md@cm.com</td>
+          <td>325.913.9665</td>
+          <td>Skokie</td>
+        </tr>
+      <tfoot>
+        <tr>
+          <th><input type="text" name="search_engine" value="Filter Families" class="search_init" /></th>
+          <th><input type="text" name="search_browser" value="Filter Dogs" class="search_init" /></th>
+          <th><input type="text" name="search_platform" value="Filter Cats" class="search_init" /></th>
+          <th><input type="text" name="search_version" value="Filter Emails" class="search_init" /></th>
+          <th><input type="text" name="search_grade" value="Filter Phone" class="search_init" /></th>
+          <th><input type="text" name="search_grade" value="Filter City" class="search_init" /></th>
+        </tr>
+      </tfoot>
+      </tbody>
+      
+    </table>
+  </div>
+</div>
